@@ -10,6 +10,9 @@ import java.sql.Statement;
 //외부에 있는 데이터와 연결하기 위해선 stream이 필요
 public class BookDAO {
 	public void select(String sql) {
+		//ResultSet: SQL쿼리의 결과를 담는 개체. 이 객체는 체이블 형태의 데이터를 담는다.
+		//Statement: SQL문장을 데이터베이스에 보내기 위한 객체
+		//Connection: 데이터베이스와의 연결을 나타냄. 이를 통해 쿼리를 실행하고 결과를 바당올 수 있음
 		Connection con = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -23,8 +26,9 @@ public class BookDAO {
 				String attr1=rs.getString(1);
 				String attr2=rs.getString(2);
 				String attr3=rs.getString(3);
-				String attr4=rs.getString(4);
-				System.out.println(attr1+","+attr2+","+attr3+","+attr4);
+				int attr4=rs.getInt(4);
+				//int attr4=rs.getInt("price");
+				System.out.println(attr1+","+attr2+","+attr3+","+(attr4*10));
 			}
 			
 		} catch (ClassNotFoundException e) {

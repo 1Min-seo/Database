@@ -20,6 +20,10 @@ public class ConnectionManager {
 		
 	}
 	
+	//데이터베이스와의 연결을 종료하는 메소드
+	//ResultSet: SQL쿼리의 결과를 담는 개체. 이 객체는 체이블 형태의 데이터를 담는다.
+	//Statement: SQL문장을 데이터베이스에 보내기 위한 객체
+	//Connection: 데이터베이스와의 연결을 나타냄. 이를 통해 쿼리를 실행하고 결과를 바당올 수 있음
 	public static void closeConnection(ResultSet rs, Statement stmt, Connection con) {
 		if(rs!=null) {
 			try {
