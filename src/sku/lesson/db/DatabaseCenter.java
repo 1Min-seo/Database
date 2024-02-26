@@ -25,7 +25,7 @@ public class DatabaseCenter {
 		String id="root";
 		String pwd="1q2w3e4r";
 		
-		//driver : 연결시켜주는(인식시켜주는) 의미
+		//driver : 자바프로그램과 db 서버를 연결시켜주는(인식시켜주는) 의미
 		String driver="com.mysql.cj.jdbc.Driver";
 		String jdbcURL="jdbc:mysql://localhost:3306/gisa";
 		Class.forName(driver);
