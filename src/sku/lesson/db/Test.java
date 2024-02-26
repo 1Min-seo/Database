@@ -47,7 +47,7 @@ public class Test {
 						for (int i = 1; i <= cols; i++) {
 							System.out.print(rs.getString(i)+" ");
 						}
-						br.readLine();
+						System.out.println();
 					}
 
 					rs.close();
