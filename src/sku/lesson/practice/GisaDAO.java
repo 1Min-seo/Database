@@ -8,60 +8,80 @@ import java.util.ArrayList;
 
 public class GisaDAO {
 	
-	public boolean insert(ArrayList<Student> list) {
-		boolean flag=false;
-		
-		return flag;
-	}
-	public boolean insert(Student student)throws SQLException{
-		boolean flag=false;
-		Connection con=ConnectionManager.getconnection();
-		String sql="insert into gisa values (?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement psmt=con.prepareStatement(sql);
-		psmt.setInt(1, student.getStuNo());
-		psmt.setString(2, student.getEmail());
-		psmt.setInt(3, student.getKor());
-		psmt.setInt(4, student.getEng());
-		psmt.setInt(5, student.getMath());
-		psmt.setInt(6, student.getSci());
-		psmt.setInt(7, student.getHis());
-		psmt.setInt(8, student.getTotal());
-		psmt.setString(9, student.getMgrCode());
-		psmt.setString(10, student.getAchCode());
-		psmt.setString(11, student.getLocCode());
-		int affectedCount=psmt.executeUpdate();
-		if(affectedCount>0) {
-			flag=true;
+	public boolean insert(ArrayList<Student> list) throws SQLException{
+		boolean flag = false;
+		Connection con = ConnectionManager.getConnection();
+		String sql = "insert into gisa values (?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		int affectedCount = 0;
+		for(Student student : list) {
+			pstmt.setInt(1, student.getStuNo());
+			pstmt.setString(2, student.getEmail());
+			pstmt.setInt(3, student.getKor());
+			pstmt.setInt(4, student.getEng());
+			pstmt.setInt(5, student.getMath());
+			pstmt.setInt(6, student.getSci());
+			pstmt.setInt(7, student.getHis());
+			pstmt.setInt(8, student.getTotal());
+			pstmt.setString(9, student.getMgrCode());
+			pstmt.setString(10, student.getAchCode());
+			pstmt.setString(11, student.getLocCode());
+			affectedCount += pstmt.executeUpdate();
 		}
-		ConnectionManager.closeConnection(null, psmt, con);
+		
+		if(affectedCount>0) {
+			System.out.println(affectedCount);
+			flag = true;
+		}
+		ConnectionManager.closeConnection(null, pstmt, con);
+		
 		return flag;
 	}
 	
-	public boolean insert(String sql) throws SQLException {
-		boolean flag=false;
-		Connection con=ConnectionManager.getconnection();
-		Statement stmt=con.createStatement();
-		int affectedCount=stmt.executeUpdate(sql);
-		ConnectionManager.closeConnection(null, stmt, con);
-		
+	public boolean insert(Student student) throws SQLException {
+		boolean flag = false;
+		Connection con = ConnectionManager.getConnection();
+		String sql = "insert into gisa values (?,?,?,?,?,?,?,?,?,?,?)";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		pstmt.setInt(1, student.getStuNo());
+		pstmt.setString(2, student.getEmail());
+		pstmt.setInt(3, student.getKor());
+		pstmt.setInt(4, student.getEng());
+		pstmt.setInt(5, student.getMath());
+		pstmt.setInt(6, student.getSci());
+		pstmt.setInt(7, student.getHis());
+		pstmt.setInt(8, student.getTotal());
+		pstmt.setString(9, student.getMgrCode());
+		pstmt.setString(10, student.getAchCode());
+		pstmt.setString(11, student.getLocCode());
+		int affectedCount = pstmt.executeUpdate();
 		if(affectedCount>0) {
-			flag=true;
+			flag = true;
+		}
+		ConnectionManager.closeConnection(null, pstmt, con);
+		return flag;
+	}
+	public boolean insert(String sql) throws SQLException {
+		boolean flag = false;
+		Connection con = ConnectionManager.getConnection();
+		Statement stmt = con.createStatement();
+		int affectedCount = stmt.executeUpdate(sql);
+		ConnectionManager.closeConnection(null, stmt, con);
+		if(affectedCount>0) {
+			flag = true;
 		}
 		return flag;
 	}
 	
 	public boolean delete(String sql) throws SQLException {
-		boolean flag=false;
-		Connection con=ConnectionManager.getconnection();
-		Statement stmt=con.createStatement();
-		int affectedCount=stmt.executeUpdate(sql);
+		boolean flag = false;
+		Connection con = ConnectionManager.getConnection();
+		Statement stmt = con.createStatement();
+		int affectedCount = stmt.executeUpdate(sql);
 		ConnectionManager.closeConnection(null, stmt, con);
-		
 		if(affectedCount>0) {
-			flag=true;
+			flag = true;
 		}
 		return flag;
 	}
-	
-	
 }
