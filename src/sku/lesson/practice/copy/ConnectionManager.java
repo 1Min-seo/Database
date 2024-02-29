@@ -1,4 +1,4 @@
-package sku.lesson.practice;
+package sku.lesson.practice.copy;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,7 +13,7 @@ public class ConnectionManager {
 		String id = "root";
 		String pwd = "1q2w3e4r";
 		String driver = "com.mysql.cj.jdbc.Driver";
-		String jdbcURL = "jdbc:mysql://localhost:3306/sku";
+		String jdbcURL = "jdbc:mysql://localhost:3306/gisa";
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(jdbcURL,id,pwd);
@@ -26,6 +26,31 @@ public class ConnectionManager {
 	}
 	
 	public static void closeConnection(ResultSet rs, Statement stmt, Connection con) {
+		if(rs!=null) {
+			try {
+				rs.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
+		if(stmt!=null) {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(con!=null) {
+			try {
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }

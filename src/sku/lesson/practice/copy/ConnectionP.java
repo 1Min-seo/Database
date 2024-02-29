@@ -1,4 +1,4 @@
-package sku.lesson.practice;
+package sku.lesson.practice.copy;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,7 +20,7 @@ public class ConnectionP {
 		String id = "root";
 		String pwd = "1q2w3e4r";
 		String driver = "com.mysql.cj.jdbc.Driver";
-		String jdbcURL = "jdbc:mysql://localhost:3306/gisa"; // 프로토콜(주 + 보조)/ 포트번호 / 이름
+		String jdbcURL = "jdbc:mysql://localhost:3306/sku"; // 프로토콜(주 + 보조)/ 포트번호 / 이름
 		Class.forName(driver);
 		
 		Connection con = null;
